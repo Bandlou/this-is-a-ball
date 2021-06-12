@@ -6,14 +6,12 @@ namespace Player
 {
     public class DefaultState : IPlayerState
     {
-        public Color GetColor()
-        {
-            return new Color(0.6078432f, 0.6235294f, 0.2f);
-        }
+        public float GetJumpForce() => 200;
 
-        public PhysicsMaterial2D GetPhysicsMaterial()
-        {
-            return Resources.Load<PhysicsMaterial2D>("Materials/Player/Default");
-        }
+        public Sprite GetImage() => Resources.Load<Sprite>("Textures/Player/default");
+
+        public Color GetColor() => new Color(0.8207547f, 0.7998322f, 0.367791f);
+
+        public PhysicsMaterial2D GetPhysicsMaterial() => Resources.Load<PhysicsMaterial2D>("Materials/Player/Physic/Default");
     }
 }
