@@ -22,9 +22,10 @@ public class ParallaxBackground : MonoBehaviour
         var sprite = GetComponent<SpriteRenderer>().sprite;
         var texture = sprite.texture;
         textureUnitSize = new Vector2(texture.width / sprite.pixelsPerUnit, texture.height / sprite.pixelsPerUnit);
+        //if (gameObject.name == "Nebula Blue") Debug.Log(gameObject.name + ": width=" + texture.width + ", ppu=" + sprite.pixelsPerUnit + ", tus=" + textureUnitSize);
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         Vector3 deltaMovement = cameraTransform.position - lastCameraPosition;
         transform.position += deltaMovement * parallaxEffectMultiplier;
@@ -38,7 +39,7 @@ public class ParallaxBackground : MonoBehaviour
         if (Mathf.Abs(cameraTransform.position.y - transform.position.y) >= textureUnitSize.y)
         {
             float offset = (cameraTransform.position.y - transform.position.y) % textureUnitSize.y;
-            transform.position = new Vector2(transform.position.x, cameraTransform.position.y);
+            transform.position = new Vector2(transform.position.x, cameraTransform.position.y + offset);
         }
     }
 }

@@ -12,6 +12,6 @@ namespace Player
 
         public Color GetColor() => new Color(1, 1, 1);
 
-        public PhysicsMaterial2D GetPhysicsMaterial() => Resources.Load<PhysicsMaterial2D>("Materials/Player/Physic/Ice");
+        public PhysicsMaterial2D GetPhysicsMaterial() => Resources.Load<PhysicsMaterial2D>("PhysicsMaterials/Player/Ice");
     }
 }

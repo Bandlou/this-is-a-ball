@@ -12,6 +12,6 @@ namespace Player
 
         public Color GetColor() => new Color(0.7021412f, 0.8490566f, 0.2763439f);
 
-        public PhysicsMaterial2D GetPhysicsMaterial() => Resources.Load<PhysicsMaterial2D>("Materials/Player/Physic/Sticky");
+        public PhysicsMaterial2D GetPhysicsMaterial() => Resources.Load<PhysicsMaterial2D>("PhysicsMaterials/Player/Sticky");
     }
 }
