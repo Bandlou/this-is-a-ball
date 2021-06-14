@@ -22,10 +22,13 @@ namespace Bdl.Utils.Grid
 
         // PUBLIC FIELDS
         public TilemapSpriteUV[] tilemapSpriteUVArray;
+        public string sortingLayerName = "Default";
+        public int sortingOrder = 0;
 
         // PRIVATE FIELDS
         private Grid<TilemapObject> grid;
         private Mesh mesh;
+        private MeshRenderer meshRenderer;
         private bool updateMesh;
         private Dictionary<TilemapType, UVCoords> uvCoodsDictionary;
 
@@ -33,10 +36,17 @@ namespace Bdl.Utils.Grid
 
         private void Awake()
         {
+            // Init mesh filter
             mesh = new Mesh();
             GetComponent<MeshFilter>().mesh = mesh;
 
-            var texture = GetComponent<MeshRenderer>().material.mainTexture;
+            // Init mesh renderer
+            meshRenderer = GetComponent<MeshRenderer>();
+            meshRenderer.sortingLayerName = sortingLayerName;
+            meshRenderer.sortingOrder = sortingOrder;
+
+            // Build UV coords from mesh renderer's texture
+            var texture = meshRenderer.material.mainTexture;
             uvCoodsDictionary = new Dictionary<TilemapType, UVCoords>();
             foreach (var tilemapSpriteUV in tilemapSpriteUVArray)
             {

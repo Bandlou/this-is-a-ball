@@ -36,14 +36,24 @@ namespace Tilemaps
             }
         }
 
-        public override void SetTilemapSprite(Vector3 worldPosition, TilemapType tilemapSprite)
+        public override void SetTilemapSprite(int x, int y, TilemapType tilemapSprite)
         {
-            var tile = grid.GetGridObject(worldPosition);
+            var tile = grid.GetGridObject(x, y);
             if (tile is null)
                 return; // Out of range
             if (tile.X <= 0 || tile.X >= grid.Width - 1 || tile.Y <= 0 || tile.Y >= grid.Height - 1)
                 return; // Prevent from altering bedrock
             tile.SetType(tilemapSprite);
+        }
+
+        public override void Save(string filename)
+        {
+            base.Save("tilemap_main_" + filename);
+        }
+
+        public override void Load(string filename)
+        {
+            base.Load("tilemap_main_" + filename);
         }
     }
 }

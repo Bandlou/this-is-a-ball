@@ -52,6 +52,8 @@ MonoBehaviour:
   - tilemapSprite: 2
     uv00Pixels: {x: 256, y: 96}
     uv11Pixels: {x: 288, y: 128}
+  sortingLayerName: Default
+  sortingOrder: 10
 --- !u!33 &5998368424083620719
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -79,7 +81,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed1c27ec5846c204c8aa38baa00ba93e, type: 2}
+  - {fileID: 2100000, guid: 7da7666c1f9c28e4f9dcf45feaa3233e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

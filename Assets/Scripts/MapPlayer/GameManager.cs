@@ -44,11 +44,11 @@ public class GameManager : MonoBehaviour
 
     private void Save()
     {
-        tilemap.Save();
+        tilemap.Save("gm");
     }
 
     private void Load()
     {
-        tilemap.Load();
+        tilemap.Load("gm");
     }
 }

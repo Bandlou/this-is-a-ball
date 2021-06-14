@@ -48,11 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemapSpriteUVArray:
   - tilemapSprite: 1
-    uv00Pixels: {x: 0, y: 256}
-    uv11Pixels: {x: 32, y: 288}
+    uv00Pixels: {x: 0, y: 0}
+    uv11Pixels: {x: 32, y: 32}
   - tilemapSprite: 2
-    uv00Pixels: {x: 32, y: 256}
-    uv11Pixels: {x: 64, y: 288}
+    uv00Pixels: {x: 32, y: 0}
+    uv11Pixels: {x: 64, y: 32}
+  sortingLayerName: Default
+  sortingOrder: 20
 --- !u!33 &2026391042175451897
 MeshFilter:
   m_ObjectHideFlags: 0
