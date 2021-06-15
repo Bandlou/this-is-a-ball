@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,13 +8,6 @@ namespace Bdl.Utils.Grid
     public class TilemapRenderer : MonoBehaviour
     {
         // STRUCT
-        [System.Serializable]
-        public struct TilemapSpriteUV
-        {
-            public TilemapType tilemapSprite;
-            public Vector2Int uv00Pixels;
-            public Vector2Int uv11Pixels;
-        }
         private struct UVCoords
         {
             public Vector2 uv00;
@@ -21,7 +15,8 @@ namespace Bdl.Utils.Grid
         }
 
         // PUBLIC FIELDS
-        public TilemapSpriteUV[] tilemapSpriteUVArray;
+        public int cellSize = 32;
+        public int tileTypeCount = 1;
         public string sortingLayerName = "Default";
         public int sortingOrder = 0;
 
@@ -30,7 +25,7 @@ namespace Bdl.Utils.Grid
         private Mesh mesh;
         private MeshRenderer meshRenderer;
         private bool updateMesh;
-        private Dictionary<TilemapType, UVCoords> uvCoodsDictionary;
+        private Dictionary<int, UVCoords> uvCoodsDictionary;
 
         // LIFECYCLE
 
@@ -46,19 +41,29 @@ namespace Bdl.Utils.Grid
             meshRenderer.sortingOrder = sortingOrder;
 
             // Build UV coords from mesh renderer's texture
-            var texture = meshRenderer.material.mainTexture;
-            uvCoodsDictionary = new Dictionary<TilemapType, UVCoords>();
-            foreach (var tilemapSpriteUV in tilemapSpriteUVArray)
+            var texture = (Texture2D)meshRenderer.material.mainTexture;
+            uvCoodsDictionary = new Dictionary<int, UVCoords>();
+
+            int y = 0, tilemapTypeIndex = 1; // start at index = 1 to skip => TilemapType.None = 0
+            while (y < texture.height / cellSize && tilemapTypeIndex < tileTypeCount)
             {
-                uvCoodsDictionary[tilemapSpriteUV.tilemapSprite] = new UVCoords()
+                int x = 0;
+                while (x < texture.width / cellSize && tilemapTypeIndex < tileTypeCount)
                 {
-                    uv00 = new Vector2(
-                        tilemapSpriteUV.uv00Pixels.x / (float)texture.width,
-                        tilemapSpriteUV.uv00Pixels.y / (float)texture.height),
-                    uv11 = new Vector2(
-                        tilemapSpriteUV.uv11Pixels.x / (float)texture.width,
-                        tilemapSpriteUV.uv11Pixels.y / (float)texture.height)
-                };
+                    var uvCoords = new UVCoords()
+                    {
+                        uv00 = new Vector2(
+                                x * cellSize / (float)texture.width,
+                                (texture.height - (y + 1) * cellSize) / (float)texture.height),
+                        uv11 = new Vector2(
+                                (x + 1) * cellSize / (float)texture.width,
+                                (texture.height - y * cellSize) / (float)texture.height)
+                    };
+                    uvCoodsDictionary.Add(tilemapTypeIndex++, uvCoords);
+
+                    ++x;
+                }
+                ++y;
             }
         }
 
@@ -99,17 +104,18 @@ namespace Bdl.Utils.Grid
                     Vector3 quadSize = new Vector3(1, 1) * grid.CellSize;
 
                     var tilemapObject = grid.GetGridObject(x, y);
-                    var tilemapSprite = tilemapObject.GetTilemapType();
+                    var tilemapType = tilemapObject.GetTileType();
 
                     Vector2 gridValueUV00, gridValueUV11;
-                    if (tilemapSprite is TilemapType.None)
+                    if (tilemapType <= 0)
                     {
                         gridValueUV00 = Vector2.zero;
                         gridValueUV11 = Vector2.zero;
+                        quadSize = Vector3.zero;
                     }
                     else
                     {
-                        var uvCoords = uvCoodsDictionary[tilemapSprite];
+                        var uvCoords = uvCoodsDictionary[tilemapType];
                         gridValueUV00 = uvCoords.uv00;
                         gridValueUV11 = uvCoords.uv11;
                     }

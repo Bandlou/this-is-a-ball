@@ -4,25 +4,20 @@ using UnityEngine;
 
 namespace Bdl.Utils.Grid
 {
-    public enum TilemapType
-    {
-        None, GroundA, GroundB
-    }
-
-    public class TilemapObject : GridObject
+    public abstract class TilemapObject : GridObject
     {
         // SERIALIZABLE CLASS
         [System.Serializable]
         public class SerializedTilemapObject
         {
-            public TilemapType tilemapSprite;
+            public int type;
             public int x;
             public int y;
         }
 
         // PRIVATE FIELDS
         protected Grid<TilemapObject> grid;
-        private TilemapType type;
+        protected int type;
 
         // CONSTRUCTOR
 
@@ -34,9 +29,9 @@ namespace Bdl.Utils.Grid
 
         // PUBLIC METHODS
 
-        public TilemapType GetTilemapType() => type;
+        public int GetTileType() => type;
 
-        public void SetType(TilemapType type)
+        public void SetType(int type)
         {
             this.type = type;
             grid.TriggerGridObjectChanged(x, y);
@@ -46,7 +41,7 @@ namespace Bdl.Utils.Grid
         {
             return new SerializedTilemapObject
             {
-                tilemapSprite = this.type,
+                type = this.type,
                 x = this.x,
                 y = this.y
             };
@@ -54,7 +49,7 @@ namespace Bdl.Utils.Grid
 
         public void Load(SerializedTilemapObject tilemapObjectSave)
         {
-            type = tilemapObjectSave.tilemapSprite;
+            type = (int)tilemapObjectSave.type;
         }
     }
 }

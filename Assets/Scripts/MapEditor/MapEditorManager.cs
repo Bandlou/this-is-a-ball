@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Bdl.Utils.Grid;
 using Tilemaps;
 
 namespace MapEditor
 {
+    public enum MapEditorBrush
+    {
+        Paint
+    }
+
     public class MapEditorManager : MonoBehaviour
     {
         // PUBLIC FIELDS
@@ -18,20 +24,25 @@ namespace MapEditor
         // PRIVATE FIELDS
         private TilemapMain tilemapMain;
         private TilemapBackground tilemapBackground;
+        private TilemapLayer activeLayer = TilemapLayer.Main;
+        private MapEditorBrush activeBrush = MapEditorBrush.Paint;
+        private int activeBrushTileType = 1;
 
         // LIFECYCLE
 
         private void Start()
         {
             // Init UI controller
+            mapEditorUIController.SetLayer(activeLayer);
             mapEditorUIController.Locked = true;
             mapEditorUIController.OnNewMapRequest += NewMap;
-            mapEditorUIController.OnSaveMapRequest += SaveMap;
-            mapEditorUIController.OnLoadMapRequest += LoadMap;
+            mapEditorUIController.OnSaveMapRequest += SaveMap; // TODO: save name in param
+            mapEditorUIController.OnLoadMapRequest += LoadMap; // TODO: save name in param
             mapEditorUIController.OnBackToMainMenuRequest += () => Debug.Log("back main menu");
-            mapEditorUIController.OnBackToDesktopRequest += () => Debug.Log("desktop");
+            mapEditorUIController.OnBackToDesktopRequest += () => Application.Quit(); // TODO: check for save
             mapEditorUIController.OnHideMainLayerRequest += value => tilemapMainRenderer.SetActive(value);
             mapEditorUIController.OnHideBackgroundLayerRequest += value => tilemapBackgroundRenderer.SetActive(value);
+            mapEditorUIController.OnTileTypeSelected += (layer, type) => { activeLayer = layer; activeBrushTileType = type; };
 
             // Init camera
             cameraController.MapSize = mapSize;
@@ -55,20 +66,33 @@ namespace MapEditor
             // Map edition
             if (!mapEditorUIController.IsMainMenuActive)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (!EventSystem.current.IsPointerOverGameObject())
                 {
-                    var mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    tilemapBackground.SetTilemapSprite(mouseWorldPosition, TilemapType.GroundA);
-                }
-                if (Input.GetMouseButtonDown(1))
-                {
-                    var mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    tilemapBackground.SetTilemapSprite(mouseWorldPosition, TilemapType.GroundB);
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        var mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        GetActiveTilemap().SetTilemapSprite(mouseWorldPosition, activeBrushTileType);
+                    }
+                    if (Input.GetMouseButtonDown(1))
+                    {
+                        var mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        GetActiveTilemap().SetTilemapSprite(mouseWorldPosition, 0);
+                    }
                 }
             }
         }
 
         // PRIVATE METHODS
+
+        private Tilemap GetActiveTilemap()
+        {
+            return activeLayer switch
+            {
+                TilemapLayer.Main => tilemapMain,
+                TilemapLayer.Background => tilemapBackground,
+                _ => null,
+            };
+        }
 
         private void NewMap()
         {

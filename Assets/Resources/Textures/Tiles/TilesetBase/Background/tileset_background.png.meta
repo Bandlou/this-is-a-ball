@@ -206,6 +206,18 @@ TextureImporter:
   - first:
       213: -938948473949830872
     second: tileset_background_67
+  - first:
+      213: 6126361990132299834
+    second: tileset_background_68
+  - first:
+      213: 1694439518341676874
+    second: tileset_background_69
+  - first:
+      213: 3853286313115725310
+    second: tileset_background_70
+  - first:
+      213: -2054552923620968690
+    second: tileset_background_71
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -844,8 +856,8 @@ TextureImporter:
       name: tileset_background_26
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
+        x: 256
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -865,7 +877,7 @@ TextureImporter:
       name: tileset_background_27
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 128
         width: 32
         height: 32
@@ -886,7 +898,7 @@ TextureImporter:
       name: tileset_background_28
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 128
         width: 32
         height: 32
@@ -907,7 +919,7 @@ TextureImporter:
       name: tileset_background_29
       rect:
         serializedVersion: 2
-        x: 96
+        x: 64
         y: 128
         width: 32
         height: 32
@@ -928,7 +940,7 @@ TextureImporter:
       name: tileset_background_30
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 128
         width: 32
         height: 32
@@ -949,7 +961,7 @@ TextureImporter:
       name: tileset_background_31
       rect:
         serializedVersion: 2
-        x: 160
+        x: 128
         y: 128
         width: 32
         height: 32
@@ -970,7 +982,7 @@ TextureImporter:
       name: tileset_background_32
       rect:
         serializedVersion: 2
-        x: 192
+        x: 160
         y: 128
         width: 32
         height: 32
@@ -991,7 +1003,7 @@ TextureImporter:
       name: tileset_background_33
       rect:
         serializedVersion: 2
-        x: 224
+        x: 192
         y: 128
         width: 32
         height: 32
@@ -1012,8 +1024,8 @@ TextureImporter:
       name: tileset_background_34
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 224
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -1033,8 +1045,8 @@ TextureImporter:
       name: tileset_background_35
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 256
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -1054,7 +1066,7 @@ TextureImporter:
       name: tileset_background_36
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
         y: 96
         width: 32
         height: 32
@@ -1075,7 +1087,7 @@ TextureImporter:
       name: tileset_background_37
       rect:
         serializedVersion: 2
-        x: 96
+        x: 32
         y: 96
         width: 32
         height: 32
@@ -1096,7 +1108,7 @@ TextureImporter:
       name: tileset_background_38
       rect:
         serializedVersion: 2
-        x: 128
+        x: 64
         y: 96
         width: 32
         height: 32
@@ -1117,7 +1129,7 @@ TextureImporter:
       name: tileset_background_39
       rect:
         serializedVersion: 2
-        x: 160
+        x: 96
         y: 96
         width: 32
         height: 32
@@ -1138,7 +1150,7 @@ TextureImporter:
       name: tileset_background_40
       rect:
         serializedVersion: 2
-        x: 192
+        x: 128
         y: 96
         width: 32
         height: 32
@@ -1159,7 +1171,7 @@ TextureImporter:
       name: tileset_background_41
       rect:
         serializedVersion: 2
-        x: 224
+        x: 160
         y: 96
         width: 32
         height: 32
@@ -1180,7 +1192,7 @@ TextureImporter:
       name: tileset_background_42
       rect:
         serializedVersion: 2
-        x: 256
+        x: 192
         y: 96
         width: 32
         height: 32
@@ -1201,8 +1213,8 @@ TextureImporter:
       name: tileset_background_43
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 224
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -1222,8 +1234,8 @@ TextureImporter:
       name: tileset_background_44
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 256
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -1243,7 +1255,7 @@ TextureImporter:
       name: tileset_background_45
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
         y: 64
         width: 32
         height: 32
@@ -1264,7 +1276,7 @@ TextureImporter:
       name: tileset_background_46
       rect:
         serializedVersion: 2
-        x: 96
+        x: 32
         y: 64
         width: 32
         height: 32
@@ -1285,7 +1297,7 @@ TextureImporter:
       name: tileset_background_47
       rect:
         serializedVersion: 2
-        x: 128
+        x: 64
         y: 64
         width: 32
         height: 32
@@ -1306,7 +1318,7 @@ TextureImporter:
       name: tileset_background_48
       rect:
         serializedVersion: 2
-        x: 160
+        x: 96
         y: 64
         width: 32
         height: 32
@@ -1327,7 +1339,7 @@ TextureImporter:
       name: tileset_background_49
       rect:
         serializedVersion: 2
-        x: 192
+        x: 128
         y: 64
         width: 32
         height: 32
@@ -1348,7 +1360,7 @@ TextureImporter:
       name: tileset_background_50
       rect:
         serializedVersion: 2
-        x: 224
+        x: 160
         y: 64
         width: 32
         height: 32
@@ -1369,7 +1381,7 @@ TextureImporter:
       name: tileset_background_51
       rect:
         serializedVersion: 2
-        x: 256
+        x: 192
         y: 64
         width: 32
         height: 32
@@ -1390,8 +1402,8 @@ TextureImporter:
       name: tileset_background_52
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 224
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -1411,8 +1423,8 @@ TextureImporter:
       name: tileset_background_53
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 256
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -1432,7 +1444,7 @@ TextureImporter:
       name: tileset_background_54
       rect:
         serializedVersion: 2
-        x: 64
+        x: 0
         y: 32
         width: 32
         height: 32
@@ -1453,7 +1465,7 @@ TextureImporter:
       name: tileset_background_55
       rect:
         serializedVersion: 2
-        x: 96
+        x: 32
         y: 32
         width: 32
         height: 32
@@ -1474,7 +1486,7 @@ TextureImporter:
       name: tileset_background_56
       rect:
         serializedVersion: 2
-        x: 128
+        x: 64
         y: 32
         width: 32
         height: 32
@@ -1495,7 +1507,7 @@ TextureImporter:
       name: tileset_background_57
       rect:
         serializedVersion: 2
-        x: 160
+        x: 96
         y: 32
         width: 32
         height: 32
@@ -1516,7 +1528,7 @@ TextureImporter:
       name: tileset_background_58
       rect:
         serializedVersion: 2
-        x: 192
+        x: 128
         y: 32
         width: 32
         height: 32
@@ -1537,7 +1549,7 @@ TextureImporter:
       name: tileset_background_59
       rect:
         serializedVersion: 2
-        x: 224
+        x: 160
         y: 32
         width: 32
         height: 32
@@ -1558,8 +1570,8 @@ TextureImporter:
       name: tileset_background_60
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 192
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -1579,8 +1591,8 @@ TextureImporter:
       name: tileset_background_61
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 224
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -1600,8 +1612,8 @@ TextureImporter:
       name: tileset_background_62
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 256
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -1621,7 +1633,7 @@ TextureImporter:
       name: tileset_background_63
       rect:
         serializedVersion: 2
-        x: 96
+        x: 0
         y: 0
         width: 32
         height: 32
@@ -1642,7 +1654,7 @@ TextureImporter:
       name: tileset_background_64
       rect:
         serializedVersion: 2
-        x: 128
+        x: 32
         y: 0
         width: 32
         height: 32
@@ -1663,7 +1675,7 @@ TextureImporter:
       name: tileset_background_65
       rect:
         serializedVersion: 2
-        x: 160
+        x: 64
         y: 0
         width: 32
         height: 32
@@ -1684,7 +1696,7 @@ TextureImporter:
       name: tileset_background_66
       rect:
         serializedVersion: 2
-        x: 192
+        x: 96
         y: 0
         width: 32
         height: 32
@@ -1705,7 +1717,7 @@ TextureImporter:
       name: tileset_background_67
       rect:
         serializedVersion: 2
-        x: 224
+        x: 128
         y: 0
         width: 32
         height: 32
@@ -1718,6 +1730,90 @@ TextureImporter:
       bones: []
       spriteID: 82143d3765f28f2f0800000000000000
       internalID: -938948473949830872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_background_68
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a387a4b65c5350550800000000000000
+      internalID: 6126361990132299834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_background_69
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4fb320b3cbd38710800000000000000
+      internalID: 1694439518341676874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_background_70
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd23277c7f997530800000000000000
+      internalID: 3853286313115725310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_background_71
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e07f45f5003cc73e0800000000000000
+      internalID: -2054552923620968690
       vertices: []
       indices: 
       edges: []

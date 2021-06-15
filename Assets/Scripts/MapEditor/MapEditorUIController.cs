@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Bdl.Utils.Grid;
 
 namespace MapEditor
 {
@@ -18,11 +17,14 @@ namespace MapEditor
         public delegate void ToogleRequestAction(bool value);
         public event ToogleRequestAction OnHideMainLayerRequest;
         public event ToogleRequestAction OnHideBackgroundLayerRequest;
+        public delegate void TileTypeSelectedAction(Tilemaps.TilemapLayer layer, int tileType);
+        public event TileTypeSelectedAction OnTileTypeSelected;
 
         // PUBLIC FIELDS
         public GameObject mainMenu;
         public GameObject toolbar;
         public Button resumeButton;
+        public TMPro.TMP_Dropdown layerDropdown;
         public MapEditorUIToolmapTiles toolbarTiles;
 
         // PROPERTIES
@@ -38,8 +40,10 @@ namespace MapEditor
         {
             Locked = false;
             SetMainMenuVisibility(true);
-            toolbarTiles.SetLayer("Main");
-            toolbarTiles.OnTileClicked += (layer, type) => Debug.Log(layer + ", " + type);
+
+            SetLayer(Tilemaps.TilemapLayer.Main);
+
+            toolbarTiles.OnTileClicked += (layer, type) => OnTileTypeSelected?.Invoke(layer, type);
         }
 
         // PUBLIC METHODS
@@ -53,6 +57,13 @@ namespace MapEditor
                 mainMenu.SetActive(visibility);
                 toolbar.SetActive(!visibility);
             }
+        }
+
+        public void SetLayer(Tilemaps.TilemapLayer layer)
+        {
+            layerDropdown.value = (int)layer;
+            toolbarTiles.SetLayer(layer);
+            OnTileTypeSelected?.Invoke(layer, 1);
         }
 
         // PUBLIC METHODS (EVENTS)
@@ -73,7 +84,12 @@ namespace MapEditor
 
         public void OnHideBackgroundLayerToogled(bool value) => OnHideBackgroundLayerRequest?.Invoke(value);
 
-        public void OnLayerDropdownSelected(int value) => toolbarTiles.SetLayer(value == 0 ? "Main" : "Background");
+        public void OnLayerDropdownSelected(int value)
+        {
+            var layer = (Tilemaps.TilemapLayer)value;
+            toolbarTiles.SetLayer(layer);
+            OnTileTypeSelected?.Invoke(layer, 1);
+        }
 
         // PRIVATE METHODS
 

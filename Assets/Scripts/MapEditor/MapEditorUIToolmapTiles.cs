@@ -8,7 +8,7 @@ namespace MapEditor
     public class MapEditorUIToolmapTiles : MonoBehaviour
     {
         // EVENTS
-        public delegate void TileClickAction(string layer, TilemapType type);
+        public delegate void TileClickAction(Tilemaps.TilemapLayer layer, int type);
         public event TileClickAction OnTileClicked;
 
         // PUBLIC FIELDS
@@ -16,14 +16,14 @@ namespace MapEditor
 
         // PUBLIC METHODS
 
-        public void SetLayer(string layer)
+        public void SetLayer(Tilemaps.TilemapLayer layer)
         {
             UpdateGrid(layer);
         }
 
         // PRIVATE METHODS
 
-        private void UpdateGrid(string layer)
+        private void UpdateGrid(Tilemaps.TilemapLayer layer)
         {
             // Clear
             foreach (Transform child in transform)
@@ -31,14 +31,17 @@ namespace MapEditor
 
             // Populate
             var sprites = Resources.LoadAll<Sprite>("Textures/Tiles/TilesetBase/" + layer);
+            int index = 1;
             foreach (var sprite in sprites)
             {
                 if (!sprite.name.Contains("_n_"))
                 {
                     var tile = Instantiate(tilePrefab, transform);
                     var tileScript = tile.GetComponent<MapEditorUIToolbarTile>();
-                    tileScript.SetData(layer, Bdl.Utils.Grid.TilemapType.GroundA, sprite);
+                    tileScript.SetData(layer, index, sprite);
                     tileScript.OnClicked += (layer, type) => OnTileClicked?.Invoke(layer, type);
+                    
+                    index++;
                 }
             }
         }

@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Bdl.Utils.Grid;
 
 namespace MapEditor
 {
     public class MapEditorUIToolbarTile : MonoBehaviour, IPointerClickHandler
     {
         // EVENTS
-        public delegate void ClickAction(string layer, TilemapType type);
+        public delegate void ClickAction(Tilemaps.TilemapLayer layer, int type);
         public event ClickAction OnClicked;
 
         // PUBLIC FIELDS
         public Image image;
 
         // PRIVATE FIELDS
-        private TilemapType type;
-        private string layer;
+        private int type;
+        private Tilemaps.TilemapLayer layer;
 
         // PUBLIC METHODS
 
-        public void SetData(string layer, TilemapType type, Sprite sprite)
+        public void SetData(Tilemaps.TilemapLayer layer, int type, Sprite sprite)
         {
             this.layer = layer;
             this.type = type;

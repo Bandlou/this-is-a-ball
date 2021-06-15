@@ -18,6 +18,7 @@ namespace Bdl.Utils.Grid
         private Rigidbody2D rigidBody;
         private CompositeCollider2D compositeCollider;
         private bool updateColliders;
+        private bool updateGeometry;
 
         // LIFECYCLE
 
@@ -41,6 +42,11 @@ namespace Bdl.Utils.Grid
             {
                 updateColliders = false;
                 UpdateColliders();
+                if (updateGeometry)
+                {
+                    updateGeometry = false;
+                    GenerateGeometry();
+                }
             }
         }
 
@@ -53,7 +59,7 @@ namespace Bdl.Utils.Grid
             GenerateGeometry();
 
             grid.OnGridValueChanged += (x, y) => updateColliders = true;
-            tilemap.OnLoaded += () => updateColliders = true;
+            tilemap.OnLoaded += () => { updateColliders = true; updateGeometry = true; };
         }
 
         public void GenerateGeometry() => compositeCollider.GenerateGeometry();
@@ -69,9 +75,9 @@ namespace Bdl.Utils.Grid
                     Vector3 quadSize = new Vector3(1, 1) * grid.CellSize;
 
                     var tilemapObject = grid.GetGridObject(x, y);
-                    var tilemapSprite = tilemapObject.GetTilemapType();
+                    var tileType = tilemapObject.GetTileType();
 
-                    if (tilemapSprite != TilemapType.None)
+                    if (tileType > 0)
                     {
                         var tileCollider = colliders.AddComponent<BoxCollider2D>();
                         tileCollider.usedByComposite = true;

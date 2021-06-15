@@ -23,11 +23,12 @@ namespace Bdl.Utils.Grid
 
         // CONSTRUCTOR
 
-        public Tilemap(int width, int height) : this(width, height, 1, Vector3.zero) { }
+        public Tilemap(int width, int height, Func<Grid<TilemapObject>, int, int, TilemapObject> createGridObject)
+            : this(width, height, 1, Vector3.zero, createGridObject) { }
 
-        public Tilemap(int width, int height, float cellSize, Vector3 origin)
+        public Tilemap(int width, int height, float cellSize, Vector3 origin, Func<Grid<TilemapObject>, int, int, TilemapObject> createGridObject)
         {
-            grid = new Grid<TilemapObject>(width, height, cellSize, origin, (Grid<TilemapObject> g, int x, int y) => new TilemapObject(g, x, y));
+            grid = new Grid<TilemapObject>(width, height, cellSize, origin, createGridObject);
         }
 
         // PUBLIC METHODS
@@ -42,7 +43,7 @@ namespace Bdl.Utils.Grid
             tilemapCollisionRenderer.SetGrid(grid, this);
         }
 
-        public void SetTilemapSprite(Vector3 worldPosition, TilemapType tilemapSprite)
+        public void SetTilemapSprite(Vector3 worldPosition, int tilemapSprite)
         {
             var tile = grid.GetGridObject(worldPosition);
             if (tile is null)
@@ -50,7 +51,7 @@ namespace Bdl.Utils.Grid
             SetTilemapSprite(tile.X, tile.Y, tilemapSprite);
         }
 
-        public virtual void SetTilemapSprite(int x, int y, TilemapType tilemapType)
+        public virtual void SetTilemapSprite(int x, int y, int tilemapType)
         {
             var tile = grid.GetGridObject(x, y);
             if (tile is null)
@@ -85,7 +86,7 @@ namespace Bdl.Utils.Grid
         {
             for (int x = 0; x < grid.Width; ++x)
                 for (int y = 0; y < grid.Height; ++y)
-                    grid.GetGridObject(x, y).SetType(TilemapType.None);
+                    grid.GetGridObject(x, y).SetType(0);
         }
     }
 }

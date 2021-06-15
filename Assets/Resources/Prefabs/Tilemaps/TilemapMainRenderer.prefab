@@ -46,13 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe06840ee66cc147b322bb60d798795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemapSpriteUVArray:
-  - tilemapSprite: 1
-    uv00Pixels: {x: 0, y: 0}
-    uv11Pixels: {x: 32, y: 32}
-  - tilemapSprite: 2
-    uv00Pixels: {x: 32, y: 0}
-    uv11Pixels: {x: 64, y: 32}
+  cellSize: 32
+  tileTypeCount: 4
   sortingLayerName: Default
   sortingOrder: 20
 --- !u!33 &2026391042175451897

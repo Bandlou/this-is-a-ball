@@ -2,53 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bdl.Utils.Grid;
+using Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
     // PUBLIC FIELDS
-    public TilemapRenderer tilemapRenderer;
-    public TilemapCollisionRenderer tilemapCollisionRenderer;
+    public Vector2Int mapSize = new Vector2Int(100, 50);
+    public GameObject tilemapMainRenderer;
+    public GameObject tilemapBackgroundRenderer;
 
     // PRIVATE FIELDS
-    private Tilemap tilemap;
+    private TilemapMain tilemapMain;
+    private TilemapBackground tilemapBackground;
 
     // LIFECYCLE
 
     private void Start()
     {
-        tilemap = new Tilemap(10, 10, 1, new Vector3(0, -5));
-        tilemap.SetTilemapRenderer(tilemapRenderer);
-        tilemap.SetTilemapCollisionRenderer(tilemapCollisionRenderer);
-    }
+        // Init background tilemap
+        tilemapBackground = new TilemapBackground(mapSize.x, mapSize.y);
+        tilemapBackground.SetTilemapRenderer(tilemapBackgroundRenderer.GetComponent<TilemapRenderer>());
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-            Save();
-        if (Input.GetKeyDown(KeyCode.B))
-            Load();
+        // Init main tilemap
+        tilemapMain = new TilemapMain(mapSize.x, mapSize.y);
+        tilemapMain.SetTilemapRenderer(tilemapMainRenderer.GetComponent<TilemapRenderer>());
+        tilemapMain.SetTilemapCollisionRenderer(tilemapMainRenderer.GetComponent<TilemapCollisionRenderer>());
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            var mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            tilemap.SetTilemapSprite(mouseWorldPosition, TilemapType.GroundA);
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            var mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            tilemap.SetTilemapSprite(mouseWorldPosition, TilemapType.GroundB);
-        }
+        // Load map
+        LoadMap();
     }
 
     // PRIVATE METHODS
 
-    private void Save()
+    private void LoadMap()
     {
-        tilemap.Save("gm");
-    }
+        // Load background tilemap
+        tilemapBackground.Load("salut");
 
-    private void Load()
-    {
-        tilemap.Load("gm");
+        // Load main tilemap
+        tilemapMain.Load("salut");
+        tilemapMainRenderer.GetComponent<TilemapCollisionRenderer>().GenerateGeometry();
     }
 }
