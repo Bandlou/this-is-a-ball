@@ -48,6 +48,8 @@ namespace Bdl.Utils.Grid
                         Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
                     }
                 }
+                Debug.DrawLine(GetWorldPosition(gridArray.GetLength(0), 0), GetWorldPosition(gridArray.GetLength(0), gridArray.GetLength(1)), Color.white, 100f);
+                Debug.DrawLine(GetWorldPosition(0, gridArray.GetLength(1)), GetWorldPosition(gridArray.GetLength(0), gridArray.GetLength(1)), Color.white, 100f);
             }
         }
 
@@ -60,7 +62,7 @@ namespace Bdl.Utils.Grid
 
         public void SetGridObject(int x, int y, TGridObject value)
         {
-            if (x >= 0 && x < width && y >= 0 && y < height)
+            if (IsXYValid(x, y))
             {
                 gridArray[x, y] = value;
                 OnGridValueChanged?.Invoke(x, y);
@@ -75,7 +77,7 @@ namespace Bdl.Utils.Grid
 
         public TGridObject GetGridObject(int x, int y)
         {
-            if (x >= 0 && x < width && y >= 0 && y < height)
+            if (IsXYValid(x, y))
                 return gridArray[x, y];
             else
                 return default;
@@ -92,12 +94,15 @@ namespace Bdl.Utils.Grid
             return new Vector3(x, y) * cellSize + origin;
         }
 
-        // PRIVATE METHODS
-
-        private void GetXY(Vector3 worldPosition, out int x, out int y)
+        public void GetXY(Vector3 worldPosition, out int x, out int y)
         {
             x = Mathf.FloorToInt((worldPosition.x - origin.x) / cellSize);
             y = Mathf.FloorToInt((worldPosition.y - origin.y) / cellSize);
+        }
+
+        public bool IsXYValid(int x, int y)
+        {
+            return x >= 0 && x < width && y >= 0 && y < height;
         }
     }
 }
