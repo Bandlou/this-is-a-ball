@@ -41,6 +41,5 @@ public class GameManager : MonoBehaviour
 
         // Load main tilemap
         tilemapMain.Load("salut");
-        tilemapMainRenderer.GetComponent<TilemapCollisionRenderer>().GenerateGeometry();
     }
 }
