@@ -14,7 +14,7 @@ namespace Tilemaps
         BGTile41, BGTile42, BGTile43, BGTile44, BaseGrayA, BGTile46, BGTile47, BGTile48, BGTile49, BGTile50,
         BGTile51, BGTile52, BGTile53, BaseGrayB, BGTile55, BGTile56, BGTile57, BGTile58, BGTile59, BGTile60,
         BGTile61, BGTile62, BGTile63, BGTile64, BGTile65, BGTile66, BGTile67, BGTile68, BGTile69, BGTile70,
-        BGTile71
+        BGTile71, BGTile72
     }
 
     public class TilemapBackgroundObject : TilemapObject

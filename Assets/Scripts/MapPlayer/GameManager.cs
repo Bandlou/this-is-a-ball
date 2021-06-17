@@ -7,6 +7,7 @@ using Tilemaps;
 public class GameManager : MonoBehaviour
 {
     // PUBLIC FIELDS
+    public float mapCellSize = 1;
     public Vector2Int mapSize = new Vector2Int(100, 50);
     public GameObject tilemapMainRenderer;
     public GameObject tilemapBackgroundRenderer;
@@ -20,12 +21,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // Init background tilemap
-        tilemapBackground = new TilemapBackground(mapSize.x, mapSize.y);
-        tilemapBackground.SetTilemapRenderer(tilemapBackgroundRenderer.GetComponent<TilemapRenderer>());
+        tilemapBackground = new TilemapBackground(mapSize.x, mapSize.y, mapCellSize, Vector3.zero);
+        tilemapBackground.SetTilemapRenderer(tilemapBackgroundRenderer.GetComponent<TilemapRenderer2>());
 
         // Init main tilemap
-        tilemapMain = new TilemapMain(mapSize.x, mapSize.y);
-        tilemapMain.SetTilemapRenderer(tilemapMainRenderer.GetComponent<TilemapRenderer>());
+        tilemapMain = new TilemapMain(mapSize.x, mapSize.y, mapCellSize, Vector3.zero);
+        tilemapMain.SetTilemapRenderer(tilemapMainRenderer.GetComponent<TilemapRenderer2>());
         tilemapMain.SetTilemapCollisionRenderer(tilemapMainRenderer.GetComponent<TilemapCollisionRenderer>());
 
         // Load map

@@ -33,7 +33,7 @@ namespace Bdl.Utils.Grid
 
         // PUBLIC METHODS
 
-        public virtual void SetTilemapRenderer(TilemapRenderer tilemapRenderer)
+        public virtual void SetTilemapRenderer(TilemapRenderer2 tilemapRenderer)
         {
             tilemapRenderer.SetGrid(grid, this);
         }

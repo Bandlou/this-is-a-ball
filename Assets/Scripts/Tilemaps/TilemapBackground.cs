@@ -35,7 +35,7 @@ namespace Tilemaps
             tile.SetType((int)tileType);
         }
 
-        public override void SetTilemapRenderer(TilemapRenderer tilemapRenderer)
+        public override void SetTilemapRenderer(TilemapRenderer2 tilemapRenderer)
         {
             base.SetTilemapRenderer(tilemapRenderer);
         }
