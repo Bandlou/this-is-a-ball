@@ -1,4 +1,8 @@
 # This is a ball
+## Contributors
+- Louis Bandelier
+
+## Description
 Small Unity project to get to know the engine. Implemented features:
 - A simple platformer gameplay:
    - Build-in basic physics (gravity, friction, bouncing) and a custom electric field component.
